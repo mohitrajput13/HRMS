@@ -1,0 +1,10 @@
+.hiring{
+   width:100%;
+   display: flex;
+   padding: auto;
+}
+.main-second,.main-third{
+    padding: 10px;
+    display: flex;
+    gap:50px
+}

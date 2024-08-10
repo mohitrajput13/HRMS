@@ -1,0 +1,49 @@
+/* src/Calendar.css */
+.calendar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .header, .dates {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .day, .date {
+    width: 14.28%;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+  }
+  
+  .day {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .date {
+    height: 100px;
+    text-align: center;
+  }
+  
+  .date .event {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .annual-leave { background-color: lightblue; }
+  .public-holiday { background-color: lightblue; }
+  .employee-anniversary { background-color: lightgreen; }
+  .emergency-leave { background-color: peachpuff; }
+  .sick-leave { background-color: peachpuff; }
+  

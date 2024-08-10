@@ -1,0 +1,213 @@
+@font-face {
+  font-family: 'Poppins-SemiBold';
+  src: url('../assets/fonts/Poppins/Poppins-SemiBold.ttf');
+}
+@font-face {
+  font-family: 'Poppins-Light';
+  src: url('../assets/fonts/Poppins/Poppins-Light.ttf');
+}
+@font-face {
+  font-family: 'Poppins-Medium';
+  src: url('../assets/fonts/Poppins/Poppins-Medium.ttf');
+}
+
+.center{
+  display:flex;
+  color:white;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  width: 158px;
+height: 60px;
+
+}
+.abstract {
+  width: 50%;
+}
+
+.commonStyle{
+  width: 141px;
+  height: 43px;
+  gap: 0px;
+  color: #F0FBFF;
+  border-radius: 8px ;
+  border: 2px ;
+  opacity: 0px;
+  background: #FEA633;  
+}
+
+.buttonSize364_yellow {
+    color: white;
+    width:364px;
+    height: 48px;
+}
+.inputSize364 {
+  width: 364px;
+  height: 48px;
+  font-family: 'Poppins-Light';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  border-radius: 25px;
+  background-color: #F0FBFF;
+  border-style: none;
+}
+.inputSize200 {
+  width: 100%;
+  max-width: 200px;
+  height: 30px;
+  font-family: 'Poppins-Light';
+  font-size: 14px;
+  padding-left: 10px;
+  font-weight: 400;
+  line-height: 24px;
+  border-radius: 25px;
+  background-color: #F0FBFF;
+  border-style: none;
+}
+.inputSize364::placeholder {
+  padding: 10px;
+}
+
+.fontW400_black{
+  font-family: 'Poppins-Light';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #515458;
+}
+.fontW500_black{
+  color: #515458;
+font-family: 'Poppins-Light';
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+}
+.fontW500_blackbd{
+  color: #000000;
+  font-family: 'Poppins-Light';
+font-size: 16px;
+font-weight: 500;
+line-height: 21px;
+}
+.fontS27{
+  font-family: 'Poppins-Light';
+font-size: 27px;
+font-weight: 600;
+line-height: 18px;
+}
+.fontW600{
+  font-family: 'Poppins-SemiBold';
+font-size: 14px;
+font-weight: 600;
+line-height: 18px;
+}
+@media (max-width: 575px) {
+  .center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo{
+    max-width: 128px;
+    height: 50px;
+  }
+  .buttonSize364_yellow {
+      font-family: 'Poppins-SemiBold';
+      background-color:#FEA633 ;
+      color: white;
+      max-width: 350px;
+      padding: 12px 24px 12px 24px;
+      gap: 6px;
+      border-radius: 10px;
+      opacity: 0px;
+      border-style: none;
+  }
+  
+  
+  .inputSize364::placeholder {
+    padding: 10px;
+  }
+  
+  .fontW400_black{
+    font-family: 'Poppins-Light';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #515458;
+  }
+  .fontW500_black{
+    color: #515458;
+  font-family: 'Poppins-Light';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  }
+  .fontS27{
+    font-family: 'Poppins-Light';
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 18px;
+  }
+  .fontW600{
+    font-family: 'Poppins-SemiBold';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  }
+}
+@media (max-width: 360px) {
+  .center{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo{
+    max-width: 128px;
+    height: 50px;
+  }
+  .buttonSize364_yellow {
+      font-family: 'Poppins-SemiBold';
+      background-color:#FEA633 ;
+      color: white;
+      max-width: 350px;
+      padding: 12px 24px 12px 24px;
+      gap: 6px;
+      border-radius: 10px;
+      opacity: 0px;
+      border-style: none;
+  }
+
+  
+  .inputSize364::placeholder {
+    padding: 10px;
+  }
+  
+  .fontW400_black{
+    font-family: 'Poppins-Light';
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #515458;
+  }
+  .fontW500_black{
+    color: #515458;
+  font-family: 'Poppins-Light';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  }
+  .fontS27{
+    font-family: 'Poppins-Light';
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 18px;
+  }
+  .fontW600{
+    font-family: 'Poppins-SemiBold';
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  }
+}

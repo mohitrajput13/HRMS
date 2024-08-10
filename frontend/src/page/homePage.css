@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Poppins-SemiBold';
+    src: url('../assets/fonts/Poppins/Poppins-SemiBold.ttf');
+  }
+  @font-face {
+    font-family: 'Poppins-Light';
+    src: url('../assets/fonts/Poppins/Poppins-Light.ttf');
+  }
+  @font-face {
+    font-family: 'Poppins-Medium';
+    src: url('../assets/fonts/Poppins/Poppins-Medium.ttf');
+  }
+  .dash-third ,p {
+    font-family: 'Poppins-Light';
+  }
+.dash-third{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width :100%;
+    background-image: url('../assets/images/Group 2521.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:500px 400px; /* Width aur Height set karein */
+    min-height: 100vh;
+  }
+
+.dashthird-first{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.thrid-left-container{
+    flex: 1 1 65%;
+}
+.thrid-right-container{
+    flex: 1 1 20%;
+}
+.dashthird-second{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:100%;
+}
+@media (max-width: 1074px) {
+    .dashthird-second,.dashthird-first{
+        width: 100%;
+    }
+    .dashthird-first{
+        height: 500px;
+    }
+}
+@media (max-width: 767px) {
+    .dashthird-second,.dashthird-first{
+        display: none;
+    }
+
+}
+@media (max-width: 575px) {
+    .dash-third{
+        background-image: url('../assets/images/Group 2521.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:330px 300px; /* Width aur Height set karein */
+      }
+    .dashthird-second,.dashthird-first{
+        display: none;
+    }
+}

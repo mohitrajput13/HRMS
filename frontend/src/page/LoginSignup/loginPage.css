@@ -1,0 +1,101 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #f4fcff;
+}
+
+.left-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4fcff;
+}
+
+.right-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+}
+
+.right-container-first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 364px;
+}
+
+.right-container-second {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .left-container {
+    display: none;
+  }
+
+  .right-container {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .left-container {
+    display: none;
+  }
+
+  .right-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-form {
+    width: 90%;
+  }
+}
+
+@media (max-width: 575px) {
+  .right-container-second {
+    padding: 10px;
+    margin: 20px 0;
+    gap: 8px;
+  }
+
+  .login-form {
+    width: 80%;
+  }
+}
+
+@media (max-width: 360px) {
+  .right-container-second {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+}

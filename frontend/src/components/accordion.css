@@ -1,0 +1,61 @@
+/* accordion.css */
+
+/* General styles for the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.bg-table:hover{
+    background-color: #D6F5FF !important;
+}
+/* Make sure accordion items are clickable */
+.accordion-item {
+    cursor: pointer;
+}
+
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Arrow direction based on state */
+.bxs-chevron-right {
+    transform: rotate(0deg);
+}
+
+.bxs-chevron-down {
+    transform: rotate(0deg);
+}
+
+/* Transition for accordion collapse */
+.accordion-collapse {
+    transition: max-height 0.3s ease;
+}
+
+/* Padding for accordion body */
+.accordion-body {
+    padding: 1rem;
+}
+
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .accordion-container {
+        padding: 0 15px;
+    }
+    .accordion-profile{
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .profile-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .table {
+        font-size: 14px;
+    }
+
+}

@@ -1,0 +1,44 @@
+import { Route, Routes } from 'react-router-dom';
+import './style/commonStyle.css';
+import LoginPage from './page/LoginSignup/LoginPage';
+import SignUpPage from './page/LoginSignup/SignUpPage';
+import HomePage from './page/HomePage';
+import MainComponent from './page/MainComponent';
+import DashBoard from './page/DashBoard/DashBoard';
+import Salary from './page/Payroll/Salary';
+import NewEmployees from './page/Employees/NewEmployees';
+import OldEmployees from './page/Employees/OldEmployees';
+import ResumeRepository from './page/Recruitment/ResumeRepository';
+import JobDescription from './page/Recruitment/JobDescription';
+import PettyCash from './page/Payroll/PettyCash';
+import InOutSheet from './page/Attendance/In-Out-Sheet';
+import AttendanceSheet from './page/Attendance/AttendanceSheet';
+import Profile from './page/Profile';
+import ForgetPassword from './page/LoginSignup/ForgetPassword';
+import 'react-toastify/dist/ReactToastify.css';
+function App() {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/signin" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage/>} />
+        <Route path="/forgetpassword" element={<ForgetPassword/>} />
+        <Route path="/maincomponent" element={<MainComponent/>}>
+          <Route index element={<DashBoard/>} />
+          <Route path="newemployee" element={<NewEmployees />} />
+          <Route path="oddemployee" element={<OldEmployees />} />
+          <Route path="resumerepository" element={<ResumeRepository />} />
+          <Route path="jobdescription" element={<JobDescription />} />
+          <Route path="salarysheet" element={<Salary />} />
+          <Route path="pettycash" element={<PettyCash />} />
+          <Route path="inoutsheet" element={<InOutSheet />} />
+          <Route path="attendancesheet" element={<AttendanceSheet />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
+      </Routes>
+    </div>
+  );
+}
+
+export default App;

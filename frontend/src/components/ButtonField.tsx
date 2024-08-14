@@ -3,6 +3,7 @@ import React from "react";
 interface AppButtonProps {
   type?: "submit" | "reset" | "button" | undefined;
   classname?: any;
+  disabled?:boolean;
   data_bs_toggle?: string;
   data_bs_target?: string;
   data_bs_dismiss?: string;
@@ -21,6 +22,7 @@ const ButtonField = ({
   data_bs_target,
   data_bs_toggle,
   onClick,
+  disabled=false,
   iconleftside,
   fafaiconleft,
   iconrightside,
@@ -29,6 +31,7 @@ const ButtonField = ({
 }: AppButtonProps) => {
   return (
     <button
+      disabled={disabled}
       data-bs-toggle={data_bs_toggle}
       data-bs-dismiss={data_bs_dismiss}
       data-bs-target={data_bs_target}

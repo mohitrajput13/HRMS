@@ -22,7 +22,9 @@ import phpimg from "../assets/images/image 23.png";
 import drupalimg from "../assets/images/image 24.png";
 import profilelogo from "../assets/images/Ellipse 21.png";
 import certificate from "../assets/images/Rectangle 62.png";
+import logout from "../assets/images/Frame 2303.png"
 export default {
+  logout,
   uiuximg,
   profilelogo,
   reactimg,

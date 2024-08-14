@@ -102,7 +102,7 @@ const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen, setHeaderLabel }) =>
               <div className="profile_name">Prem Shahi</div>
               <div className="job">Web Designer</div>
             </div>
-            <i className='bx bx-log-out'></i>
+            <i onClick={()=>{alert("welcome")}} className='bx bx-log-out'></i>
           </div>
         </li>
       </ul>

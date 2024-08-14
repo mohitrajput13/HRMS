@@ -145,7 +145,6 @@ const Newemployee = () => {
   useEffect(() => {
     fetchData();
   }, []);
-    
 
   const resetForm = () => {
     setEmployeeData({
@@ -217,23 +216,23 @@ const Newemployee = () => {
             fetchData();
           })
           .catch((error) => console.error(error));
-      }
-      else {
-        console.log("chal rhaa hai"+employeeData.eid);
-        await fetch(`http://localhost:8080/updateEmployee/${employeeData.eid}`, {
-          method: "PUT",
-          body: formData,
-          redirect: "follow",
-        })
+      } else {
+        console.log("chal rhaa hai" + employeeData.eid);
+        await fetch(
+          `http://localhost:8080/updateEmployee/${employeeData.eid}`,
+          {
+            method: "PUT",
+            body: formData,
+            redirect: "follow",
+          }
+        )
           .then((response) => response.json())
           .then((data) => {
             console.log("Employee updated:", data);
-            fetchData(); 
+            fetchData();
           })
           .catch((error) => console.error("Error updating employee:", error));
-
       }
-
     } catch (error) {
       console.error("Error saving data: ", error);
     }
@@ -264,7 +263,7 @@ const Newemployee = () => {
       department: item.department,
       jobtitle: item.jobtitle,
       profile: item.profile,
-      resume: item.resume
+      resume: item.resume,
     });
   };
 
@@ -298,7 +297,8 @@ const Newemployee = () => {
           handleInputChange={handleInputChange}
           handleProfileChange={handleProfileChange}
           handleResumeChange={handleResumeChange}
-          onSave={onSave} />
+          onSave={onSave}
+        />
         <table className="table">
           <thead>
             <tr>
@@ -369,4 +369,3 @@ const Newemployee = () => {
 };
 
 export default Newemployee;
-

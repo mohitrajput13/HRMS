@@ -1,33 +1,34 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import OTPInput from 'react-otp-input';
 import { useNavigate } from 'react-router-dom';
 
 
 const ForgotPasswordForm = () => {
-    const [hiddenForgetFrom,setHiddenForgetFrom]=useState<boolean>(true);
+  const [hiddenForgetFrom, setHiddenForgetFrom] = useState<boolean>(true);
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const navigate = useNavigate();
-  const handleOtpSubmit = async (event:any) => {
+  const handleOtpSubmit = async (event: any) => {
     event.preventDefault();
     try {
-        console.log(email);
-        
-      const response = await axios.post('http://localhost:8080/otp', { email,otp });
+      console.log(email);
+
+      const response = await axios.post('http://localhost:8080/otp', { email, otp });
       console.log(response.data.result);
-      {response.data.result&&navigate("/signin")}
+      { response.data.result && navigate("/signin") }
     } catch (error) {
       console.log(error);
     }
   };
-  
 
-  const handleEmailSubmit = async (event:any) => {
+
+  const handleEmailSubmit = async (event: any) => {
     event.preventDefault();
 
     try {
-        console.log(email);
-        setHiddenForgetFrom(false);
+      console.log(email);
+      setHiddenForgetFrom(false);
       const response = await axios.post('http://localhost:8080/mail', { email });
       console.log(response.data);
     } catch (error) {
@@ -37,11 +38,11 @@ const ForgotPasswordForm = () => {
   };
 
   const handleBack = () => {
-   navigate(-1);
+    navigate(-1);
   };
 
   return (<>
-    {hiddenForgetFrom&&<div className="container mt-5">
+    {hiddenForgetFrom && <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">
@@ -67,7 +68,7 @@ const ForgotPasswordForm = () => {
         </div>
       </div>
     </div>}
-    {!hiddenForgetFrom&& <div className="container mt-5">
+    {!hiddenForgetFrom && <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-4">
           <div className="card">
@@ -78,13 +79,12 @@ const ForgotPasswordForm = () => {
               <form onSubmit={handleOtpSubmit}>
                 <div className="mb-3">
                   <label htmlFor="otp" className="form-label">OTP</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="otp"
+                  <OTPInput
                     value={otp}
-                    onChange={(e) => setOtp(e.target.value)}
-                    required
+                    onChange={setOtp}
+                    numInputs={4}
+                    renderSeparator={<span>-</span>}
+                    renderInput={(props) => <input {...props} />}
                   />
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Submit</button>
@@ -95,7 +95,7 @@ const ForgotPasswordForm = () => {
       </div>
     </div>}
   </>
-    
+
   );
 };
 

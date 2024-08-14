@@ -1,2 +1,7 @@
 import express from 'express';
-export const attendanceRouter = express.Router();
+import { addAttendance, getAllAttendance, getCurrentDateAttendance } from '../controllers/attendenceController.js';
+const attendanceRouter = express.Router();
+attendanceRouter.post('/addAttendance',addAttendance);
+attendanceRouter.get("/getCurrentDateattendance", getCurrentDateAttendance);
+attendanceRouter.get("/getallattendance", getAllAttendance);
+export default attendanceRouter;

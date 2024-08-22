@@ -22,34 +22,34 @@ const SignUpPage = () => {
     confirm: ''
   });
 
-  const validateForm = () => {
-    const newErrors = {
-      name: '',
-      email: '',
-      password: '',
-      confirm: ''
-    };
+  // const validateForm = () => {
+  //   const newErrors = {
+  //     name: '',
+  //     email: '',
+  //     password: '',
+  //     confirm: ''
+  //   };
 
-    if (!name) newErrors.name = "Name is required";
-    if (!email) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
-    if (!password) newErrors.password = "Password is required";
-    if (password !== confirm) newErrors.confirm = "Passwords do not match";
+  //   if (!name) newErrors.name = "Name is required";
+  //   if (!email) newErrors.email = "Email is required";
+  //   else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
+  //   if (!password) newErrors.password = "Password is required";
+  //   if (password !== confirm) newErrors.confirm = "Passwords do not match";
 
-    return newErrors;
-  };
+  //   return newErrors;
+  // };
 
   const handleSubmitForm = async (e: any) => {
     e.preventDefault();
 
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+    // const validationErrors = validateForm();
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors);
+    //   return;
+    // }
 
     try {
-      const response = await axios.post('http://localhost:8080/signup', { name, email, password });
+      const response = await axios.post('http://192.168.1.27:8080/signup', { name, email, password });
       toast.success("Signup Successful");
       setTimeout(() => {
         navigate("/maincomponent");

@@ -1,24 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import imagePath from "../constants/imagePath";
 import InputField from "./InputField";
 import "./Form.css";
 import ButtonField from "./ButtonField";
+
 interface FormProps {
-    employeeData?:any;
-    heading?:any;
-    handleInputChange?: (field: any) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-    handleProfileChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    handleResumeChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onSave?: () => void;
-  }
-const AddEmployeeForm : React.FC<FormProps> = ({
-    heading,
-    employeeData,
-    handleProfileChange,
-    handleResumeChange,
-    handleInputChange,
-    onSave
-  })=> {
+  employeeData?: any;
+  heading?: any;
+  handleInputChange?: (field: any) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleProfileChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleResumeChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onSave?: () => void;
+}
+
+const AddEmployeeForm: React.FC<FormProps> = ({
+  heading,
+  employeeData,
+  handleProfileChange,
+  handleResumeChange,
+  handleInputChange,
+  onSave
+}) => {
+  const [isValid, setIsValid] = useState(true);
+
+  // Function to check form validity
+  const validateForm = () => {
+    const requiredFields = [
+      employeeData?.eid,
+      employeeData?.firstname,
+      employeeData?.lastname,
+      employeeData?.dob,
+      employeeData?.language,
+      employeeData?.email,
+      employeeData?.address,
+      employeeData?.phone,
+      employeeData?.doj,
+      employeeData?.jobtitle,
+      employeeData?.department
+    ];
+    
+    // Check if any required field is missing
+    const allFieldsFilled = requiredFields.every(field => field && field.trim() !== '');
+    setIsValid(allFieldsFilled);
+  };
+
+  useEffect(() => {
+    // Validate the form whenever employeeData changes
+    validateForm();
+  }, [employeeData]);
 
   return (
     <div className="modal modal-xl" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -50,9 +79,9 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                   labelclass="fontW500_black"
                   classname="inputSize200"
                   label="Employee Id"
-                  readOnly={heading==='Update Employee' ? true :false}
+                  readOnly={heading === 'Update Employee' ? true : false}
                   value={employeeData.eid}
-                  onChange={handleInputChange ?handleInputChange("eid"): undefined}
+                  onChange={handleInputChange ? handleInputChange("eid") : undefined}
                 />
                 <InputField
                   text={"text"}
@@ -60,7 +89,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                   classname="inputSize200"
                   label="First Name"
                   value={employeeData.firstname}
-                  onChange={handleInputChange ?handleInputChange("firstname"): undefined}
+                  onChange={handleInputChange ? handleInputChange("firstname") : undefined}
                 />
                 <InputField
                   text={"text"}
@@ -68,7 +97,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                   classname="inputSize200"
                   label="Last Name"
                   value={employeeData.lastname}
-                  onChange={handleInputChange ?handleInputChange("lastname"): undefined}
+                  onChange={handleInputChange ? handleInputChange("lastname") : undefined}
                 />
                 <InputField
                   text={"date"}
@@ -76,7 +105,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                   classname="inputSize200"
                   label="Date of Birth"
                   value={employeeData.dob}
-                  onChange={handleInputChange ?handleInputChange("dob"): undefined}
+                  onChange={handleInputChange ? handleInputChange("dob") : undefined}
                 />
                 <div className="d-flex flex-column w-25">
                   <label className="fontW500_black" htmlFor="language">
@@ -88,7 +117,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                     name="language"
                     form="languageForm"
                     value={employeeData.language}
-                    onChange={handleInputChange ?handleInputChange("language"): undefined}
+                    onChange={handleInputChange ? handleInputChange("language") : undefined}
                   >
                     <option value="Hindi">Hindi</option>
                     <option value="English">English</option>
@@ -104,7 +133,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                   classname="inputSize200"
                   label="Email"
                   value={employeeData.email}
-                  onChange={handleInputChange ? handleInputChange("email"): undefined}
+                  onChange={handleInputChange ? handleInputChange("email") : undefined}
                 />
               </div>
             </div>
@@ -116,7 +145,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                 classname="inputSize200"
                 label="Address"
                 value={employeeData.address}
-                onChange={handleInputChange ?handleInputChange("address"): undefined}
+                onChange={handleInputChange ? handleInputChange("address") : undefined}
               />
               <InputField
                 text={"text"}
@@ -124,7 +153,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                 classname="inputSize200"
                 label="Phone"
                 value={employeeData.phone}
-                onChange={handleInputChange ?handleInputChange("phone"): undefined}
+                onChange={handleInputChange ? handleInputChange("phone") : undefined}
               />
             </div>
             <h5 className="fontW500_blackbd">Employee Information</h5>
@@ -135,7 +164,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                 classname="inputSize200"
                 label="Date Of Joining"
                 value={employeeData.doj}
-                onChange={handleInputChange ?handleInputChange("doj"): undefined}
+                onChange={handleInputChange ? handleInputChange("doj") : undefined}
               />
               <div className="d-flex flex-column w-25">
                 <label className="fontW500_black" htmlFor="jobTitle">Job Title</label>
@@ -145,7 +174,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                   name="jobtitle"
                   form="jobTitleForm"
                   value={employeeData.jobtitle}
-                  onChange={handleInputChange ?handleInputChange("jobtitle"): undefined}
+                  onChange={handleInputChange ? handleInputChange("jobtitle") : undefined}
                 >
                   <option value="UI?UX Designer">UI/UX Designer</option>
                   <option value="React Native Developer">React Native Developer</option>
@@ -159,7 +188,7 @@ const AddEmployeeForm : React.FC<FormProps> = ({
                 classname="inputSize200"
                 label="Department"
                 value={employeeData.department}
-                onChange={handleInputChange ?handleInputChange("department"): undefined}
+                onChange={handleInputChange ? handleInputChange("department") : undefined}
               />
             </div>
             <div className="d-flex py-3 gap-5">
@@ -191,9 +220,10 @@ const AddEmployeeForm : React.FC<FormProps> = ({
             <ButtonField
               type="button"
               classname="btn text-white btn-warning"
-              label={`${heading === 'Add Employee'?'Save changes':'Update'}`}
+              label={`${heading === 'Add Employee' ? 'Save changes' : 'Update'}`}
               data_bs_dismiss="modal"
               onClick={onSave}
+              disabled={!isValid} // Disable the button if form is not valid
             />
           </div>
         </div>

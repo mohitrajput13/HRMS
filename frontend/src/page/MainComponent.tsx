@@ -12,7 +12,7 @@ interface ActiveState {
 }
 const MainComponent = () => {
   const [hiddenSidebar, setHiddenSidebar] = useState(true)
-  const [sidebarOpen, setIsSidebarOpen] = useState(false);
+  const [sidebarOpen, setIsSidebarOpen] = useState(true);
   const [active, setActive] = useState<ActiveState>({ paris: false, london: true });
   const [headerLabel, setHeaderLabel] = useState('Dashboard');
   console.log(hiddenSidebar);
@@ -27,8 +27,6 @@ const MainComponent = () => {
         <Outlet/> 
     </section>}
     {!hiddenSidebar && <Profile active={active} setactive={setActive} setHiddenSidebar={setHiddenSidebar}/>} 
-   {/* <Demo/> */}
-    {/* <Calendar/> */}
   </>
 };
 

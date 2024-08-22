@@ -25,9 +25,11 @@ const AttendanceSheet = () => {
     startDate.getMonth() + 1,
     0
   ).getDate();
+  console.log(allAttendanceData);
+  
   const getAllAttendanceData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/getallattendance");
+      const response = await fetch("http://192.168.1.27:8080/getallattendance");
       const result = await response.json();
       setAllAttendanceData(result.data);
     } catch (error) {
@@ -36,7 +38,7 @@ const AttendanceSheet = () => {
   }
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/getAllEmployee");
+      const response = await fetch("http://192.168.1.27:8080/getAllEmployee");
       const result = await response.json();
       setAllEmployees(result);
     } catch (error) {
@@ -49,7 +51,7 @@ const AttendanceSheet = () => {
         method: "GET",
       };
 
-      fetch(`http://localhost:8080/getCurrentDateattendance?date=${currentDate}`, requestOptions)
+      fetch(`http://192.168.1.27:8080/getCurrentDateattendance?date=${currentDate}`, requestOptions)
         .then((response) => response.json())
         .then((result) => {
           setAttendance(result.data)
@@ -78,7 +80,7 @@ const AttendanceSheet = () => {
     try {
       console.log(attendanceRecord);
 
-      let response = await axios.post("http://localhost:8080/addAttendance", attendanceRecord);
+      let response = await axios.post("http://192.168.1.27:8080/addAttendance", attendanceRecord);
       console.log(response);
     } catch (error) {
       console.log(error);

@@ -15,7 +15,9 @@ import InOutSheet from './page/Attendance/In-Out-Sheet';
 import AttendanceSheet from './page/Attendance/AttendanceSheet';
 import Profile from './page/Profile';
 import ForgetPassword from './page/LoginSignup/ForgetPassword';
+import Auth from './auths/Auth'
 import 'react-toastify/dist/ReactToastify.css';
+import Leaves from './page/Attendance/Leaves';
 function App() {
   return (
     <div className="App">
@@ -24,7 +26,7 @@ function App() {
         <Route path="/signin" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/forgetpassword" element={<ForgetPassword/>} />
-        <Route path="/maincomponent" element={<MainComponent/>}>
+        <Route path="/maincomponent" element={<Auth><MainComponent/></Auth>}>
           <Route index element={<DashBoard/>} />
           <Route path="newemployee" element={<NewEmployees />} />
           <Route path="oddemployee" element={<OldEmployees />} />
@@ -35,6 +37,7 @@ function App() {
           <Route path="inoutsheet" element={<InOutSheet />} />
           <Route path="attendancesheet" element={<AttendanceSheet />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="leaves" element={<Leaves />} />
         </Route>
       </Routes>
     </div>

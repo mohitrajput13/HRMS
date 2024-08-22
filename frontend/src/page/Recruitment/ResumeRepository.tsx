@@ -22,7 +22,7 @@ const ResumeRepository: React.FC = () => {
       }, []);
     const fetchData = async () => {
         try {
-          const response = await fetch("http://localhost:8080/getAllEmployee");
+          const response = await fetch("http://192.168.1.27:8080/getAllEmployee");
           const result = await response.json();
           console.log(result);
           

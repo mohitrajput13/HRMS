@@ -1,12 +1,12 @@
 import {User} from "../models/userModel.js";
 import jwt from 'jsonwebtoken';
 import bcrypt from "bcryptjs";
-export const signIn = async (request, response, next) => {
+export const signIn = async (request, response) => {
     try {
         let { email, password } = request.body;
         let user = await User.findOne({ email });
         return user ?
-            bcrypt.compareSync(password, user.password) ? response.status(200).json({ message: "Sign in successs", user: { ...user.toObject(), password: undefined }, token: generateToken(email) }) : response.status(401).json({ error: "Bad request", message: "Invalid password" })
+            bcrypt.compareSync(password, user.password) ? response.status(200).json({ message: "Sign in successs", user: { ...user.toObject(), password: undefined }}) : response.status(401).json({ error: "Bad request", message: "Invalid password" })
             : response.status(401).json({ error: "Bad request", message: "Invalid email id" });
     }
     catch (err) {
@@ -14,6 +14,27 @@ export const signIn = async (request, response, next) => {
         return response.status(500).json({ error: "Internal Server Error" });
     }
 }
+export const resetPassword = async (request, response) => {
+    try {
+        let { email, password } = request.body;
+            let saltkey = bcrypt.genSaltSync(10);
+            password= bcrypt.hashSync(password,saltkey);
+        User.updateOne({ email },{
+            $set:{password: password}
+        }).then(result=>{
+            if(result.modifiedCount)
+              return response.status(200).json({result: "Password updated..."});
+            return response.status(401).json({error: "Bad request (Id not found)"});  
+        }).catch(err=>{
+            return response.status(500).json({message: "Internal Server Error"});
+        });
+    }
+    catch (err) {
+        console.log(err);
+        return response.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
 export const signUp = async(req,response)=>{
     try {
         let user = await User.findOne({email:req.body.email});

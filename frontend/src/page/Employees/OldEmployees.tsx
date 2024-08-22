@@ -36,7 +36,7 @@ const OldEmployees = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/getAllOldEmployee");
+      const response = await fetch("http://192.168.1.27:8080/getAllOldEmployee");
       const result = await response.json();
       setAllEmployees(result);
     } catch (error) {
@@ -46,7 +46,7 @@ const OldEmployees = () => {
   const removeEmployee = async (eid: any) => {
     try {
      // console.log(eid);
-      await axios.delete(`http://localhost:8080/removeOldEmployee/${eid}`);
+      await axios.delete(`http://192.168.1.27:8080/removeOldEmployee/${eid}`);
       fetchData();
     } catch (error) {
       console.error("Error removing employee:", error);
@@ -75,7 +75,7 @@ const OldEmployees = () => {
       formData.append("dor", employeeData.dor);
       formData.append("profile", employeeData.profile);
       if (!isEditMode) {
-        await fetch("http://localhost:8080/addOldEmployee", {
+        await fetch("http://192.168.1.27:8080/addOldEmployee", {
           method: "POST",
           body: formData,
           redirect: "follow",
@@ -88,7 +88,7 @@ const OldEmployees = () => {
       }
       else {
         console.log("chal rhaa hai"+employeeData.email);
-        await fetch(`http://localhost:8080/updateOldEmployee/${employeeData.email}`, {
+        await fetch(`http://192.168.1.27:8080/updateOldEmployee/${employeeData.email}`, {
           method: "PUT",
           body: formData,
           redirect: "follow",
@@ -163,7 +163,7 @@ const OldEmployees = () => {
                       <div className="dropdown-content">
                         <a>
                           <button
-                            className="btn-btn"
+                            className="btn-btn w-100"
                             data-bs-target="#exampleModal"
                             data-bs-toggle="modal"
                             type="button"
@@ -178,7 +178,7 @@ const OldEmployees = () => {
                         </a>
                         <a>
                           <button
-                            className="btn-btn"
+                            className="btn-btn w-100"
                             style={{ border: "none" }}
                             onClick={() => removeEmployee(item._id)}
                           >

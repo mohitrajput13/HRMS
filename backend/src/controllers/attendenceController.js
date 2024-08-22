@@ -1,5 +1,6 @@
 import express from 'express';
 import Attendance from '../models/attendanceModel.js';
+
 export const addAttendance = async (req, res) => {
   try {
     const existingEntry = await Attendance.findOne({
@@ -43,3 +44,19 @@ export const getAllAttendance = async (req, res) => {
     return res.status(500).json({ message: error });
   }
 };
+// export const getAllAttendance = async (req, res) => {
+//   try {
+//     const { eid } = req.query;
+//     const attendanceRecords = await Attendance.find({ eid }).sort({ date: 1 });
+
+//     if (attendanceRecords.length > 0) {
+//       return res.status(200).json({ status: 200, data: attendanceRecords });
+//     } else {
+//       return res.status(400).json({ status: 400, message: "No attendance records found for the specified employee ID" });
+//     }
+//   } catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
+
+

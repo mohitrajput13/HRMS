@@ -107,9 +107,9 @@ const Accordion = ({ data }: AccordionProps) => {
                                                                                 link.href = resumeUrl;
                                                                                 link.download = "Resume.pdf"; // Specify the default filename for the download
                                                                                 document.body.appendChild(link); // Append to the body
-                                                                                link.click(); 
-                                    
-                                                                              }}
+                                                                                link.click();
+
+                                                                            }}
 
 
                                                                         />

@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import imagePath from '../../constants/imagePath';
 import Hiring from '../../components/Hiring';
 import ButtonField from '../../components/ButtonField';
 import { ToastContainer ,toast} from 'react-toastify';
-
+import '../../style/commonStyle.css'
 const DashBoard = () => {
   const navigate =useNavigate();
   return <>
    <ToastContainer/>
-    <div className='main-div p-3' style={{ width: '100%', marginTop: "80px"  }}>
-      <div className='main-first d-flex p-3 ' style={{ width: '95%', borderRadius: '10px', backgroundColor: '#DEF7FF', overflow: 'visible', display: 'grid', gridTemplateColumns: '20% 80%' }}>
-        <div className='' style={{ width: '50%' }}>
+    <div className='main-div p-3' >
+      <div className='main-first d-flex p-3 '>
+        <div className='w-50'>
           <h3>Hello Sir /Mam!</h3>
           <p>HR management system is an essential tool that helps organizations manage their employees effectively.</p>
         </div>
-        <div style={{ width: '50%', position: 'relative' }}>
-          <img src={imagePath.dashBoardimage} style={{ width: '50%', position: 'absolute', top: '-70px', left: '100px' }} alt="Dashboard" />
+        <div className='w-50 dashboard-logo' >
+          <img src={imagePath.dashBoardimage} style={{ width: '50%', position: 'absolute', top: '-40px', left: '100px' }} alt="Dashboard" />
         </div>
       </div>
       <div className='p-3'>

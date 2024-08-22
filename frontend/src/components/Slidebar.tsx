@@ -1,23 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './slidebar.css';
 import imagePath from '../constants/imagePath';
 import { useNavigate } from 'react-router-dom';
+import { signOut } from '../redux/userSlice';
+import { useDispatch } from 'react-redux';
 
 interface SlidebarProps {
   isSidebarOpen: boolean;
   setHeaderLabel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen, setHeaderLabel }) => {
+const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen=true, setHeaderLabel }) => {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState('');
-
+  const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
   const handleMenuClick = (menu: string, label: string, path: string) => {
     setOpenMenu(prevMenu => (prevMenu === menu ? '' : menu));
     setHeaderLabel(label);
     navigate(path);
   };
-
+  let forget = ()=>{
+    dispatch(signOut({}))
+  }
+  console.log(count);
+  
+  useEffect(() => {
+  }, [count]);
   return (
     <div className={`sidebar ${isSidebarOpen ? 'open' : 'close'}`}>
       <div className="logo-details justify-content-center align-items-center">
@@ -48,7 +57,7 @@ const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen, setHeaderLabel }) =>
             <i className='bx bxs-chevron-down arrow'></i>
           </div>
           <ul className="sub-menu">
-            <li onClick={() => handleMenuClick('', 'Employees Record', '/maincomponent/newemployee')}><a>Employees Record</a></li>
+            {/* <li onClick={() => handleMenuClick('', 'Employees Record', '/maincomponent/newemployee')}><a>Employees Record</a></li> */}
             <li onClick={() => handleMenuClick('', 'New Employees', '/maincomponent/newemployee')}><a>New Employees</a></li>
             <li onClick={() => handleMenuClick('', 'Old Employees', '/maincomponent/oddemployee')}><a>Old Employees</a></li>
           </ul>
@@ -88,21 +97,21 @@ const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen, setHeaderLabel }) =>
             <i className='bx bxs-chevron-down arrow'></i>
           </div>
           <ul className="sub-menu">
-            <li onClick={() => handleMenuClick('', 'In-Out Sheet', '/maincomponent/inoutsheet')}><a href="#in-out-sheet">In-Out Sheet</a></li>
-            <li onClick={() => handleMenuClick('', 'Attendance Sheet', '/maincomponent/attendancesheet')}><a href="#attendance-sheet">Attendance Sheet</a></li>
-            <li onClick={() => handleMenuClick('', 'Leaves', '/maincomponent/leaves')}><a href="#leaves">Leaves</a></li>
+            <li onClick={() => handleMenuClick('', 'In-Out Sheet', '/maincomponent/inoutsheet')}><a >In-Out Sheet</a></li>
+            <li onClick={() => handleMenuClick('', 'Attendance Sheet', '/maincomponent/attendancesheet')}><a >Attendance Sheet</a></li>
+            <li onClick={() => handleMenuClick('', 'Leaves', '/maincomponent/leaves')}><a>Leaves</a></li>
           </ul>
         </li>
-        <li>
-          <div className="profile-details">
+        <li onClick={()=>forget()} >
+          <div className="profile-details" >
             <div className="profile-content">
               <img src={imagePath.birthimg} alt="Profile Img" />
             </div>
             <div className="name-job">
-              <div className="profile_name">Prem Shahi</div>
+              <div className="profile_name">Prem Sahu</div>
               <div className="job">Web Designer</div>
             </div>
-            <i onClick={()=>{alert("welcome")}} className='bx bx-log-out'></i>
+            <i className='bx bx-log-out'></i>
           </div>
         </li>
       </ul>

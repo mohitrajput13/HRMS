@@ -10,7 +10,40 @@
   font-family: 'Poppins-Medium';
   src: url('../assets/fonts/Poppins/Poppins-Medium.ttf');
 }
-
+.main-div {
+  width: 100%;
+  margin-top: "80px"
+}
+.main-second{
+  width:'95%';
+}
+.calendar{
+   width: "220px";
+}
+.table-heading{
+  min-width: "140px";
+}
+.employee-profile{
+  width: "35px";
+  border-radius: "-50%";
+}
+.main-first{
+  width: 95%; 
+  border-radius: '10px';
+  background-color: #DEF7FF;
+  overflow: 'visible';
+  display: 'grid'; 
+  grid-template-columns: '20% 80%';
+}
+.dashboard-logo{
+  position: relative;
+}
+.logo-img{
+  width: '50%';
+  position: 'absolute';
+  top: '-40px';
+  left: '100px';
+}
 .center{
   display:flex;
   color:white;

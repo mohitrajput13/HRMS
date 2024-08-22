@@ -1,5 +1,8 @@
 import Employee from '../models/employeeModel.js';
-
+import dotenv from 'dotenv'
+dotenv.config();
+console.log(process.env.baseUrl,"=======================");
+const baseUrl = process.env.baseUrl;
 export const addEmployee = async (req, res) => {
   try {
 
@@ -11,13 +14,13 @@ export const addEmployee = async (req, res) => {
         const resumePath = req.files.resume[0].originalname;
         console.log(resumePath);
 
-        req.body.resume = `http://localhost:8080/resumes/${resumePath}`;
+        req.body.resume = `${baseUrl}/resumes/${resumePath}`;
       }
 
       if (req.files && req.files.profile) {
         const profilePath = req.files.profile[0].originalname;
         console.log(profilePath);
-        req.body.profile = `http://localhost:8080/images/${profilePath}`;
+        req.body.profile = `${baseUrl}/images/${profilePath}`;
       }
 
 
@@ -35,8 +38,6 @@ export const getAllEmployee = async (req, res) => {
   try {
     const resignedEmployees = await Employee.find({ dor: { $exists: false } })
       .then((result) => {
-        //  console.log(result);
-
         return res.status(200).json({ user: result });
       })
       .catch()
@@ -73,12 +74,12 @@ export const updateEmployee = async (req, res) => {
       if (req.files && req.files.resume) {
         const resumePath = req.files.resume[0].originalname;
         console.log(resumePath);
-        req.body.resume = `http://localhost:8080/resumes/${resumePath}`;
+        req.body.resume = `${baseUrl}/resumes/${resumePath}`;
       }
       if (req.files && req.files.profile) {
         const profilePath = req.files.profile[0].originalname;
         console.log(profilePath);
-        req.body.profile = `http://localhost:8080/images/${profilePath}`;
+        req.body.profile = `${baseUrl}/images/${profilePath}`;
       }
       let result = await Employee.updateOne({ eid:id }, req.body);
       return res.status(200).json({ message: 'Update successful', user: result });
@@ -103,7 +104,7 @@ export const addOldEmployee = async (req, res) => {
       if (req.files && req.files.profile) {
         const profilePath = req.files.profile[0].originalname;
         console.log(profilePath);
-        req.body.profile = `http://localhost:8080/images/${profilePath}`;
+        req.body.profile = `${baseUrl}/images/${profilePath}`;
       }
       let result = await Employee.create(req.body);
       return res.status(200).json({ message: 'Sign up success', user: result });
@@ -157,7 +158,7 @@ export const updateOldEmployee = async (req, res) => {
       if (req.files && req.files.profile) {
         const profilePath = req.files.profile[0].originalname;
         // console.log(profilePath);
-        req.body.profile = `http://localhost:8080/images/${profilePath}`;
+        req.body.profile = `${baseUrl}/images/${profilePath}`;
       }
       let result = await Employee.updateOne({ email:req.params.email }, req.body);
       return res.status(200).json({ message: 'Update successful', user: result });

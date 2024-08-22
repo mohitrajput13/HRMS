@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "../../redux/userSlice";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -16,35 +18,47 @@ const LoginPage = () => {
     email: '',
     password: '',
   });
+  const dispatch = useDispatch();
+  console.log(email +"     "+ password);
+  console.log(errors);
+  
   const navigate = useNavigate();
 
-  const validateForm = () => {
-    const newErrors = {
-      email: '',
-      password: '',
-    };
+  // const validateForm = () => {
+  //   const newErrors = {
+  //     email:email,
+  //     password:password
+  //   };
 
-    if (!email) newErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
+  //   if (!email) newErrors.email = "Email is required";
+  //   else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
     
-    if (!password) newErrors.password = "Password is required";
+  //   if (!password) newErrors.password = "Password is required";
 
-    return newErrors;
-  };
+  //   return newErrors;
+  // };
 
   const handleSubmitForm = async (e:any) => {
     e.preventDefault();
+    console.log("afdsafds");
     
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
+    // const validationErrors = validateForm();
+    // if (Object.keys(validationErrors).length > 0) {
+    //   setErrors(validationErrors);
+    //   return;
+    // }
+    console.log("afdsafds");
     try {
-      const response = await axios.post('http://localhost:8080/login', { email, password });
-      toast.success("Login Successful");
-      navigate("/maincomponent");
+      console.log("afdsafds");
+      const response = await axios.post('http://192.168.1.27:8080/signin', { email, password });
+      console.log("afdsafds");
+      if(response)
+      {
+        dispatch(setCurrentUser(response.data.user));
+        toast.success("Login Successful");
+        navigate("/maincomponent");
+      }
+      
     } catch (error) {
       toast.error("Login Failed");
       console.error("There was an error logging in!", error);

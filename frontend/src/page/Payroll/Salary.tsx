@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ButtonField from "../../components/ButtonField";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import AddEmployeeForm from "../../components/AddEmployeeFrom";
+import AddPayrollFrom from "../../components/AddPayrollFrom";
 const Salary = () => {
   const [hidden, setHidden] = useState<boolean>(true);
   const [allEmployees, setAllEmployees] = useState<any>([]);
@@ -12,6 +12,8 @@ const Salary = () => {
     firstname: "",
     lastname: "",
     language: "",
+    salary:"",
+    annual:'',
     email: "",
     address: "",
     phone: "",
@@ -32,6 +34,8 @@ const Salary = () => {
       eid: "",
       firstname: "",
       lastname: "",
+      salary:'',
+      annual:'',
       language: "",
       email: "",
       address: "",
@@ -69,8 +73,8 @@ const Salary = () => {
   console.log("mode" + isEditMode);
   const onSave = async () => {
     const url = isEditMode
-      ? `http://localhost:8080/updateEmployee/${employeeData.eid}`
-      : "http://localhost:8080/addEmployee";
+      ? `http://192.168.1.27:8080/updateEmployee/${employeeData.eid}`
+      : "http://192.168.1.27:8080/addEmployee";
     try {
       let formData = new FormData();
       formData.append("eid", employeeData.eid);
@@ -84,10 +88,12 @@ const Salary = () => {
       formData.append("address", employeeData.address);
       formData.append("dob", employeeData.dob);
       formData.append("doj", employeeData.doj);
+      formData.append("salary",employeeData.salary);
+      formData.append("annual",employeeData.annual);
       formData.append("profile", employeeData.profile);
       formData.append("resume", employeeData.resume);
       if (!isEditMode) {
-        await fetch("http://localhost:8080/addEmployee", {
+        await fetch("http://192.168.1.27:8080/addEmployee", {
           method: "POST",
           body: formData,
           redirect: "follow",
@@ -100,7 +106,7 @@ const Salary = () => {
       }
       else {
         console.log("chal rhaa hai" + employeeData.eid);
-        await fetch(`http://localhost:8080/updateEmployee/${employeeData.eid}`, {
+        await fetch(`http://192.168.1.27:8080/updateEmployee/${employeeData.eid}`, {
           method: "PUT",
           body: formData,
           redirect: "follow",
@@ -122,7 +128,7 @@ const Salary = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8080/getAllEmployee");
+      const response = await fetch("http://192.168.1.27:8080/getAllEmployee");
       const result = await response.json();
       setAllEmployees(result);
     } catch (error) {
@@ -144,13 +150,15 @@ const Salary = () => {
       department: item.department,
       jobtitle: item.jobtitle,
       profile: item.profile,
-      resume: item.resume
+      resume: item.resume,
+      salary:item.salary,
+      annual:item.annual
     });
   };
 
   const removeEmployee = async (eid: any) => {
     try {
-      await axios.delete(`http://localhost:8080/removeEmployee/${eid}`);
+      await axios.delete(`http://192.168.1.27:8080/removeEmployee/${eid}`);
       fetchData();
     } catch (error) {
       console.error("Error removing employee:", error);
@@ -161,18 +169,7 @@ const Salary = () => {
     <>
       <ToastContainer />
       <div className="emp-main p-5">
-        <ButtonField
-          onClick={async () => {
-            setHidden(hidden ? false : true);
-          }}
-          data_bs_target="#exampleModal"
-          type="button"
-          iconleftside={"+"}
-          classname="btn btn-warning text-white"
-          data_bs_toggle="modal"
-          label="Add New"
-        />
-        <AddEmployeeForm
+        <AddPayrollFrom
           heading={isEditMode ? "Update Employee" : "Add Employee"}
           employeeData={employeeData}
           handleInputChange={handleInputChange}
@@ -206,6 +203,7 @@ const Salary = () => {
                   <td>{item.eid}</td>
                   <td>{item.jobtitle}</td>
                   <td>{item.doj}</td>
+                  <td>{item.salary}</td>
                   <td>{item.email}</td>
                   <td className="align-content-center">
                     <div className="dropdown">
@@ -215,7 +213,7 @@ const Salary = () => {
                       <div className="dropdown-content">
                         <a>
                           <button
-                            className="btn-btn"
+                            className="btn-btn w-100"
                             data-bs-target="#exampleModal"
                             data-bs-toggle="modal"
                             type="button"
@@ -230,7 +228,7 @@ const Salary = () => {
                         </a>
                         <a>
                           <button
-                            className="btn-btn"
+                            className="btn-btn w-100"
                             style={{ border: "none" }}
                             onClick={() => removeEmployee(item.eid)}
                           >

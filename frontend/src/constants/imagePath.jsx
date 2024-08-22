@@ -23,7 +23,9 @@ import drupalimg from "../assets/images/image 24.png";
 import profilelogo from "../assets/images/Ellipse 21.png";
 import certificate from "../assets/images/Rectangle 62.png";
 import logout from "../assets/images/Frame 2303.png"
+import petty from '../assets/images/Group 2520.png';
 export default {
+  petty,
   logout,
   uiuximg,
   profilelogo,

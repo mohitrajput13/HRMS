@@ -62,7 +62,7 @@ const employeeSchema = new mongoose.Schema({
   dob: {
     type: String,
   },
-  annualpay: {
+  annual: {
     type: String,
   },
 });

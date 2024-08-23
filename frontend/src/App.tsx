@@ -18,7 +18,12 @@ import ForgetPassword from './page/LoginSignup/ForgetPassword';
 import Auth from './auths/Auth'
 import 'react-toastify/dist/ReactToastify.css';
 import Leaves from './page/Attendance/Leaves';
+import { useState } from 'react';
+
+import store from './redux/Store';
 function App() {
+  const [sidebarOpen, setIsSidebarOpen] = useState(true);
+  
   return (
     <div className="App">
       <Routes>
@@ -26,8 +31,8 @@ function App() {
         <Route path="/signin" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/forgetpassword" element={<ForgetPassword/>} />
-        <Route path="/maincomponent" element={<Auth><MainComponent/></Auth>}>
-          <Route index element={<DashBoard/>} />
+        <Route path="/maincomponent" element={<Auth><MainComponent sidebarOpen={sidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/></Auth>}>
+          <Route index element={<DashBoard sidebarOpen={sidebarOpen}/>} />
           <Route path="newemployee" element={<NewEmployees />} />
           <Route path="oddemployee" element={<OldEmployees />} />
           <Route path="resumerepository" element={<ResumeRepository />} />

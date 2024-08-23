@@ -14,6 +14,17 @@ export const signIn = async (request, response) => {
         return response.status(500).json({ error: "Internal Server Error" });
     }
 }
+export const searchByEmail = async (request, response) => {
+    try {
+        let { email} = request.body;
+        let user = await User.findOne({ email });
+        return user ? response.status(200).json({ message: "User Is Exists"})
+            : response.status(401).json({message: "User Is Not Exits" });
+    }
+    catch (err) {
+        return response.status(401).json({message: "User Is Not Exits" });
+    }
+}
 export const resetPassword = async (request, response) => {
     try {
         let { email, password } = request.body;

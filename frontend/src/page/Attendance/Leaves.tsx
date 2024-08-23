@@ -13,7 +13,7 @@ const Leaves: React.FC = () => {
   return (
     <div className="d-flex">
       <main className="content flex-grow-1 ">
-        <div className="row mb-4">
+        <div className="row mb-2">
           <div className="col-md-4 text-center">
             <div className="circle-box  text-white ">
               <CircularProgressbar
@@ -81,6 +81,7 @@ const Leaves: React.FC = () => {
           </div></div>
 
           </div>
+          <div style={{overflowX:'scroll'}}>
           <table className="table table-bordered calendar-table">
             <thead>
               <tr>
@@ -107,6 +108,7 @@ const Leaves: React.FC = () => {
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
       </main>
       <aside className="right-sidebar bg-light p-4">

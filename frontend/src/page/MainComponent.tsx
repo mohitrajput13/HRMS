@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Slidebar from '../components/Slidebar';
 import Header from '../components/Header';
@@ -10,14 +11,14 @@ interface ActiveState {
   paris?: boolean;
   london?: boolean;
 }
-const MainComponent = () => {
+const MainComponent = ({sidebarOpen, setIsSidebarOpen}:any) => {
   const [hiddenSidebar, setHiddenSidebar] = useState(true)
-  const [sidebarOpen, setIsSidebarOpen] = useState(true);
+  
   const [active, setActive] = useState<ActiveState>({ paris: false, london: true });
   const [headerLabel, setHeaderLabel] = useState('Dashboard');
-  console.log(hiddenSidebar);
+  console.log(hiddenSidebar+"   "+sidebarOpen);
   const toggleSidebar = () => {
-    setIsSidebarOpen(prevState => !prevState);
+    setIsSidebarOpen((prevState:any) => !prevState);
   };
   return <>
   <ToastContainer/>

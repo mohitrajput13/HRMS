@@ -4,13 +4,14 @@ import imagePath from '../constants/imagePath';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from '../redux/userSlice';
 import { useDispatch } from 'react-redux';
-
+import { useSelector } from 'react-redux';
 interface SlidebarProps {
   isSidebarOpen: boolean;
   setHeaderLabel: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen=true, setHeaderLabel }) => {
+  const {currentUser,isLoggedIn} = useSelector((store:any)=>store.user);
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState('');
   const [count, setCount] = useState(0);
@@ -57,7 +58,7 @@ const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen=true, setHeaderLabel 
             <i className='bx bxs-chevron-down arrow'></i>
           </div>
           <ul className="sub-menu">
-            {/* <li onClick={() => handleMenuClick('', 'Employees Record', '/maincomponent/newemployee')}><a>Employees Record</a></li> */}
+            <li onClick={() => handleMenuClick('', 'Employees Record', '/maincomponent/newemployee')}><a>Employees Record</a></li>
             <li onClick={() => handleMenuClick('', 'New Employees', '/maincomponent/newemployee')}><a>New Employees</a></li>
             <li onClick={() => handleMenuClick('', 'Old Employees', '/maincomponent/oddemployee')}><a>Old Employees</a></li>
           </ul>
@@ -108,7 +109,7 @@ const Slidebar: React.FC<SlidebarProps> = ({ isSidebarOpen=true, setHeaderLabel 
               <img src={imagePath.birthimg} alt="Profile Img" />
             </div>
             <div className="name-job">
-              <div className="profile_name">Prem Sahu</div>
+              <div className="profile_name">{currentUser.name}</div>
               <div className="job">Web Designer</div>
             </div>
             <i className='bx bx-log-out'></i>

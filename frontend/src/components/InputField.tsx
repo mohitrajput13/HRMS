@@ -16,7 +16,7 @@ interface InputProps {
 const InputFeild = ({ text,placeholder, value,id, readOnly = false , onChange, labelclass, classname ,label }:InputProps) => {
   return (<>
     <div className='d-flex flex-column maindiv ' >
-    <label  className={` ${labelclass}`}>{label}</label>
+    <span  className={` ${labelclass}`}>{label}</span>
     <input
     id={id}
         required={true}

@@ -51,7 +51,7 @@ const JobDescription = () => {
   ]; 
     return (
       <>
-         <div className='row p-5' style={{gap:'20px'}}>
+         <div className='row py-1'>
              { body.map((item:any)=><Cards img={item.img} heading={item.heading} paragraph={item.paragraph} label={item.label}/>)}
         </div> 
       </>

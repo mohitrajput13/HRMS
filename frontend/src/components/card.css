@@ -1,0 +1,12 @@
+.card-first{
+    width: 100%;
+    max-width: '300px';
+    max-height: '35 0px';
+}
+.card-img-top {
+    padding: 10px;
+    width: 85%!important;
+    height: 'auto';
+    left: 10px!important;
+    height: 220px !important;
+}

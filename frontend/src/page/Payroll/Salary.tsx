@@ -176,16 +176,17 @@ const Salary = () => {
           handleProfileChange={handleProfileChange}
           handleResumeChange={handleResumeChange}
           onSave={onSave} />
+        <div style={{overflowX:'scroll'}}>
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Eid</th>
-              <th scope="col">Position</th>
-              <th scope="col">Date Of Joining</th>
-              <th scope="col">Salary</th>
-              <th scope="col">Email Id</th>
-              <th scope="col">Action</th>
+              <th style={{ minWidth: "140px" }} scope="col">Name</th>
+              <th style={{ minWidth: "140px" }} scope="col">Eid</th>
+              <th style={{ minWidth: "140px" }} scope="col">Position</th>
+              <th style={{ minWidth: "140px" }} scope="col">Date Of Joining</th>
+              <th style={{ minWidth: "140px" }} scope="col">Salary</th>
+              <th style={{ minWidth: "140px" }} scope="col">Email Id</th>
+              <th style={{ minWidth: "140px" }} scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -200,11 +201,11 @@ const Salary = () => {
                     />
                     {item.firstname}
                   </th>
-                  <td>{item.eid}</td>
-                  <td>{item.jobtitle}</td>
-                  <td>{item.doj}</td>
-                  <td>{item.salary}</td>
-                  <td>{item.email}</td>
+                  <td style={{ minWidth: "140px" }}> {item.eid}</td>
+                  <td style={{ minWidth: "140px" }}>{item.jobtitle}</td>
+                  <td style={{ minWidth: "140px" }}>{item.doj}</td>
+                  <td style={{ minWidth: "140px" }}>{item.salary}</td>
+                  <td style={{ minWidth: "140px" }}>{item.email}</td>
                   <td className="align-content-center">
                     <div className="dropdown">
                       <button className="dropbtn btn btn-light">
@@ -242,6 +243,7 @@ const Salary = () => {
               ))}
           </tbody>
         </table>
+        </div>  
       </div>
     </>
   );

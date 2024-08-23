@@ -176,7 +176,7 @@ const Profile = ({ active, setactive ,setHiddenSidebar}: ProfileProps) => {
                             <InputFeild classname={'inputSize200'} text={'date'} />
                         </div>
                     </div>
-                    <div className="first d-flex flex-row">
+                    <div className="first d-flex flex-row" style={{overflowX:'scroll'}}>
                         <table className="table">
                             <thead>
                                 <tr>

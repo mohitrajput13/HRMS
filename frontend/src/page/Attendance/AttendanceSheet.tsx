@@ -66,7 +66,7 @@ const AttendanceSheet = () => {
     getAllAttendanceData();
     getCurrentDateData({ date: currentDate });
     fetchData();
-  }, []);
+  }, [startDate]);
 
   const isPastDate = (dateString: string) => {
     const inputDate = new Date(`${dateString} ${currentYear}`);
@@ -144,8 +144,8 @@ const AttendanceSheet = () => {
         </div>
         <div
           className="w-100"
-          style={{ overflowX: formattedDate !== date ? "auto" : "clip" }}
-        >
+          style={{overflowX:'scroll'}}>
+        
           <table className="table table-responsive">
             <thead>
               <tr>
@@ -200,7 +200,7 @@ const AttendanceSheet = () => {
                             }
                           </span>
                         ) : (
-                          <div>
+                          <div style={{ minWidth: "140px" }}>
                             <ButtonField
                               label="Absent"
                               onClick={() => {

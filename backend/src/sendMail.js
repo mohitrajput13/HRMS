@@ -32,7 +32,7 @@ const sendMail = async (req, res) => {
         }
     }
     else{
-        return res.status(401).json({ error: "User Is Not Found", error });
+        return res.status(401).json({ error: "User Is Not Found" });
     }
 
 };

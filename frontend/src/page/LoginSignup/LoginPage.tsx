@@ -56,11 +56,13 @@ const LoginPage = () => {
       {
         dispatch(setCurrentUser(response.data.user));
         toast.success("Login Successful");
-        navigate("/maincomponent");
+        setTimeout(() => {
+          navigate("/maincomponent");
+        }, 2000);
       }
       
     } catch (error) {
-      toast.error("Login Failed");
+      toast.error("Please Insert Correct Information");
       console.error("There was an error logging in!", error);
     }
   };

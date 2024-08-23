@@ -22,31 +22,52 @@ const SignUpPage = () => {
     confirm: ''
   });
 
-  // const validateForm = () => {
-  //   const newErrors = {
-  //     name: '',
-  //     email: '',
-  //     password: '',
-  //     confirm: ''
-  //   };
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      email: '',
+      password: '',
+      confirm: ''
+    };
 
-  //   if (!name) newErrors.name = "Name is required";
-  //   if (!email) newErrors.email = "Email is required";
-  //   else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Email is invalid";
-  //   if (!password) newErrors.password = "Password is required";
-  //   if (password !== confirm) newErrors.confirm = "Passwords do not match";
+    if (name === null || name === undefined || name.trim() === '') {
+      newErrors.name = "Name is required";
+    }
+    if (email === null || email === undefined || email.trim() === '') {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (password === null || password === undefined || password.trim() === '') {
+      newErrors.password = "Password is required";
+    }
+    if (password !== confirm) {
+      newErrors.confirm = "Passwords do not match";
+    }
 
-  //   return newErrors;
-  // };
+    return newErrors;
+  };
 
   const handleSubmitForm = async (e: any) => {
     e.preventDefault();
 
-    // const validationErrors = validateForm();
-    // if (Object.keys(validationErrors).length > 0) {
-    //   setErrors(validationErrors);
-    //   return;
-    // }
+    const validationErrors = validateForm();
+    
+    // Check if there are any validation errors
+    const hasErrors = Object.values(validationErrors).some(error => error !== '');
+    
+    if (hasErrors) {
+      setErrors(validationErrors);
+      return;
+    }
+    
+    // If no errors, clear the errors state
+    setErrors({
+      name: '',
+      email: '',
+      password: '',
+      confirm: ''
+    });
 
     try {
       const response = await axios.post('http://192.168.1.27:8080/signup', { name, email, password });
@@ -115,6 +136,18 @@ const SignUpPage = () => {
                 />
                 {errors.confirm && <label className='text-danger'>{errors.confirm}</label>}
                 <ButtonField type='submit' classname='buttonSize364_yellow' label='Sign Up' />
+                <span
+                  className="d-block text-center ps-3 fontW400_black"
+                >
+                  have an account?{" "}
+                  <a
+                    className="text-decoration-none fontS14"
+                    style={{ color: colors.yellow }}
+                    onClick={() => navigate("/signin")}
+                  >
+                    Log in
+                  </a>
+                </span>
               </div>
             </div>
           </div>

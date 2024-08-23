@@ -1,26 +1,35 @@
-import React, { useState } from 'react';
-import imagePath from '../constants/imagePath';
-interface CardsProps{
-    img ?: string;
-    heading ?:string;
-    paragraph ?:string;
-    label ?: string;
+import React from 'react';
+import "./card.css"
+interface CardsProps {
+  img?: string;
+  heading?: string;
+  paragraph?: string;
+  label?: string;
 }
-const Cards = ({img,heading,paragraph,label}:CardsProps) => {
-    
-    return (
-        <>
-            <div className="card col-md-4 p-3" style={{width:'30%',maxHeight:'500px',alignItems:'center'}}>
-                <img className="card-img-top" src={img} alt="Card image cap" style={{width:'213px',height:'152px'}}/>
-                <div className="card-body">
-                    <h5 className="card-title text-warning">{heading}</h5>
-                    <p className="card-text">{paragraph}</p>
-                    <a href="#" className="text-decoration-none text-warning d-flex justify-content-end">{label}</a>
-                </div>
-            </div>
-        </>
-    );
 
+const Cards = ({ img, heading, paragraph, label }: CardsProps) => {
+  return (
+    <div className="col-12 col-sm-6 col-md-6 col-lg-4 py-1 d-flex justify-content-center">
+      <div className="card card-first d-flex justify-content-center" >
+        {img && (
+          <img
+            className="card-img-top"
+            src={img}
+            alt="Card image cap"
+          />
+        )}
+        <div className="card-body">
+          <h5 className="card-title text-warning">{heading}</h5>
+          <p className="card-text">{paragraph}</p>
+          {label && (
+            <a href="#" className="text-decoration-none text-warning d-flex justify-content-end">
+              {label}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Cards;

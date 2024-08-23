@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ toggleSidebar, label, setHiddenSidebar 
     <div className="home-content">
       <div className="d-flex">
         <i className="bx bx-menu" onClick={toggleSidebar}></i>
-        <span className="text">{label}</span>
+        <span style={{fontSize:'17px' ,marginTop:'5px'}} className="text">{label}</span>
       </div>
 
       <div className="d-flex">

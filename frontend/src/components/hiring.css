@@ -8,3 +8,16 @@
     display: flex;
     gap:50px
 }
+@media (max-width: 575px) {
+    .hiring{
+        width:100%;
+        display: flex;
+        
+     }
+     .main-second,.main-third{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap:5px
+    }
+}

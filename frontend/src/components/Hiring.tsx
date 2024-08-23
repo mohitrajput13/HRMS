@@ -4,27 +4,15 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import './hiring.css'
 import imagePath from "../constants/imagePath";
 import colors from "../style/colors";
-const Hiring = () => {
-  const body = [
-    {
-      id: 1,
-      heading: "Available Position",
-      percentage:75,
-      colors:"green",
-      position: 24
-    },
-    {
-      id: 2,
-      percentage:90,
-      heading: "Job Open",
-      colors:"red",
-      position: 10,
-    }
-  ];
+interface HiringProps{
+  body?:any
+}
+const Hiring = ({body}:HiringProps) => {
+ 
   return (<>
-    {body.map((item)=><div  className="hiring  card   ">
+    {body.map((item:any)=><div  className="hiring  card   ">
       <div  className="card-body d-flex d-row">
-        <div className="w-75">
+        <div className="w-100">
         <h6>{item.heading}</h6>
         <h3>{item.position}</h3>
         </div>
@@ -33,8 +21,8 @@ const Hiring = () => {
                       value={item.percentage}
                       text={`${item.percentage}%`}
                       styles={buildStyles({
-                        pathColor: `rgba(255, 0, 0, ${item.percentage / 100})`,
-                        textColor: 'red',
+                        pathColor: `${item.colors}`,
+                        textColor: `${item.textColor}`,
                         trailColor: "#d6d6d6",
                       })}
                     />

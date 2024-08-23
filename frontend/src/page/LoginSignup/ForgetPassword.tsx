@@ -4,6 +4,7 @@ import OTPInput from 'react-otp-input';
 import { useNavigate } from 'react-router-dom';
 import InputField from '../../components/InputField';
 import ButtonField from '../../components/ButtonField';
+import { toast, ToastContainer } from 'react-toastify';
 interface FormState {
   forget: boolean;
   otp: boolean;
@@ -17,7 +18,7 @@ const ForgotPasswordForm = () => {
     reset: false
   });
   console.log(hiddenForgetFrom);
-  
+
   const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [password, setPassword] = useState<string>('');
@@ -29,28 +30,28 @@ const ForgotPasswordForm = () => {
       const response = await axios.post('http://192.168.1.27:8080/otp', { email, otp });
       console.log(response.data.result);
       if (response.data.result) {
+        toast.success("Successful Match Otp");
         setHiddenForgetFrom({ forget: false, otp: false, reset: true });
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Please Enter Correct Email ");
     }
   };
 
   const handlePasswordSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      if(password === confirm)
-      {
-        const response = await axios.post('http://192.168.1.27:8080/resetpassword', { email, password});
+      if (password === confirm) {
+        const response = await axios.post('http://192.168.1.27:8080/resetpassword', { email, password });
         console.log(response.data.result);
         if (response.data.result) {
+          toast.success("Successful Reset Password");
           setHiddenForgetFrom({ forget: false, otp: false, reset: true });
           navigate("/signin")
         }
       }
-      else 
-      {
-        alert("password doesn't match");
+      else {
+        toast.error("password doesn't match");
       }
     } catch (error) {
       console.log(error);
@@ -62,13 +63,17 @@ const ForgotPasswordForm = () => {
 
     try {
       console.log(email);
-      
-      const response = await axios.post('http://192.168.1.27:8080/mail', { email });
-      if (response.data.result) {
-        setHiddenForgetFrom({ forget: false, otp: true, reset: false });
+      const user = await axios.post('http://192.168.1.27:8080/searchByEmail', { email });
+      if (user.data.message === "User Is Exists") {
+        const response = await axios.post('http://192.168.1.27:8080/mail', { email });
+        if (response.data.result) {
+          toast.success("Successful Send Otp");
+          setHiddenForgetFrom({ forget: false, otp: true, reset: false });
+        }
+        console.log(response.data);
       }
-      console.log(response.data);
     } catch (error) {
+      toast.error("Please Enter Correct Email");      
       console.log(error);
     }
 
@@ -80,7 +85,8 @@ const ForgotPasswordForm = () => {
   };
 
   return (<>
-    {hiddenForgetFrom.forget&&<div className="container mt-5 ">
+    <ToastContainer />
+    {hiddenForgetFrom.forget && <div className="container mt-5 ">
       <div className="row justify-content-center">
         <div className="col-5">
           <div className="card">
@@ -105,7 +111,7 @@ const ForgotPasswordForm = () => {
         </div>
       </div>
     </div>}
-    {hiddenForgetFrom.otp&&<div className="container mt-5">
+    {hiddenForgetFrom.otp && <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-5">
           <div className="card">
@@ -131,7 +137,7 @@ const ForgotPasswordForm = () => {
         </div>
       </div>
     </div>}
-    {hiddenForgetFrom.reset&&<div className="container mt-5">
+    {hiddenForgetFrom.reset && <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-5">
           <div className="card">

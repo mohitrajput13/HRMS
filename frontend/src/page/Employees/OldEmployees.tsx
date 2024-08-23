@@ -128,15 +128,16 @@ const OldEmployees = () => {
           handleInputChange={handleInputChange}
           handleProfileChange={handleProfileChange}
           onSave={onSave} />
+           <div style={{overflowX:'scroll'}}>
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Position</th>
-              <th scope="col">Email Id</th>
-              <th scope="col">Contact</th>
-              <th scope="col">Date Of Resign</th>
-              <th scope="col">Action</th>
+              <th style={{ minWidth: "140px" }} scope="col">Name</th>
+              <th style={{ minWidth: "140px" }}scope="col">Position</th>
+              <th style={{ minWidth: "140px" }} scope="col">Email Id</th>
+              <th style={{ minWidth: "140px" }} scope="col">Contact</th>
+              <th style={{ minWidth: "140px" }} scope="col">Date Of Resign</th>
+              <th style={{ minWidth: "140px" }} scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -151,10 +152,10 @@ const OldEmployees = () => {
                     />
                     {item.firstname}
                   </th>
-                  <td>{item.jobtitle}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phone}</td>
-                  <td>{item.dor}</td>
+                  <td style={{ minWidth: "140px" }}>{item.jobtitle}</td>
+                  <td style={{ minWidth: "140px" }}>{item.email}</td>
+                  <td style={{ minWidth: "140px" }}>{item.phone}</td>
+                  <td style={{ minWidth: "140px" }}>{item.dor}</td>
                   <td className="align-content-center">
                     <div className="dropdown">
                       <button className="dropbtn btn btn-light">
@@ -192,6 +193,7 @@ const OldEmployees = () => {
               ))}
           </tbody>
         </table>
+        </div>
       </div>
     </>
   );
